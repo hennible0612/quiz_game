@@ -11,7 +11,7 @@ assignees: ''
 설명 해주세요.
 
 ### To_Do_List
--[] TODO
--[] TODO
+- [ ] TODO
+- [ ] TODO
 
 ### ETC
