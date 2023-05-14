@@ -6,6 +6,7 @@ import gpt.io.quiz_game.dto.quiz.QuestionRequestDto;
 import gpt.io.quiz_game.dto.quiz.QuizDto;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 
 import org.springframework.stereotype.Service;
@@ -22,12 +23,18 @@ import java.util.Map;
 public class QuizService {
     private static RestTemplate restTemplate = new RestTemplate();
 
+    @Autowired
+    public QuizService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
     public ResponseEntity<Map<String, List<String>>> askQuestion(QuestionRequestDto requestDto) {
 
         try {
             HttpHeaders headers = createHeaders();
             HttpEntity<String> entity = new HttpEntity<>(createRequestBody(requestDto), headers);
             ResponseEntity<String> response = restTemplate.exchange(ChatGptConfig.URL, HttpMethod.POST, entity, String.class);
+            System.out.println(response);
             System.out.println(response.getBody());
 
             List<QuizDto> quizDtos = parseResponse(response.getBody());
@@ -56,7 +63,7 @@ public class QuizService {
         }
     }
 
-    private List<QuizDto> parseResponse(String responseBody) {
+    public List<QuizDto> parseResponse(String responseBody) {
 
         JSONObject responseJson = new JSONObject(responseBody);
         JSONArray messages = responseJson.getJSONArray("choices");
