@@ -4,11 +4,7 @@ import gpt.io.quiz_game.dto.quiz.GptResponseDto;
 import gpt.io.quiz_game.dto.quiz.QuestionGameRequestDto;
 import gpt.io.quiz_game.service.quiz.QuizService;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -28,8 +24,8 @@ public class QuizController {
     @PostMapping("/quiz")
     public GptResponseDto sendQuestion(@RequestBody QuestionGameRequestDto requestDto) {
 
-        System.out.println(quizService.askQuestion(requestDto));
-        return null;
+//        System.out.println(quizService.askQuestion(requestDto));
+        return quizService.askQuestion(requestDto);
         //        return quizService.askQuestion(requestDto);
     }
 }

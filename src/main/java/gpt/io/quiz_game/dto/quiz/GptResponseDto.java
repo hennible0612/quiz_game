@@ -1,22 +1,48 @@
 package gpt.io.quiz_game.dto.quiz;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class GptResponseDto {
-
+@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class GptResponseDto implements Serializable {
     private String id;
     private String object;
-    private LocalDate created;
+    private int created;
     private String model;
+    private Usage usage;
     private List<Choice> choices;
+
+    @Getter
+    @ToString
+    public static class Usage implements Serializable {
+        @JsonProperty("prompt_tokens")
+        private int promptTokens;
+        @JsonProperty("completion_tokens")
+        private int completionTokens;
+        @JsonProperty("total_tokens")
+        private int totalTokens;
+    }
+
+    @Getter
+    @ToString
+    public static class Choice implements Serializable {
+        private Message message;
+        @JsonProperty("finish_reason")
+        private String finishReason;
+        private int index;
+
+        @Getter
+        @ToString
+        public static class Message implements Serializable {
+            private String role;
+            private String content;
+        }
+    }
 }
