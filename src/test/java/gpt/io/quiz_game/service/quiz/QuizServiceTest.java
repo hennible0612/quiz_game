@@ -1,6 +1,6 @@
 package gpt.io.quiz_game.service.quiz;
 
-import gpt.io.quiz_game.dto.quiz.QuestionRequestDto;
+import gpt.io.quiz_game.dto.quiz.QuestionGameRequestDto;
 import gpt.io.quiz_game.dto.quiz.QuizDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,11 +29,11 @@ class QuizServiceTest {
     @Mock
     private RestTemplate restTemplate;
 
-    private QuestionRequestDto requestDto;
+    private QuestionGameRequestDto requestDto;
 
     @BeforeEach
     public void setUp() {
-        requestDto = new QuestionRequestDto();
+        requestDto = new QuestionGameRequestDto();
         requestDto.setRound(3);
         requestDto.setTopic("경제");
     }
@@ -50,7 +50,7 @@ class QuizServiceTest {
     @Test
     public void testParseTest() {
         // Given
-        QuestionRequestDto requestDto = new QuestionRequestDto(); // populate this with appropriate values
+        QuestionGameRequestDto requestDto = new QuestionGameRequestDto(); // populate this with appropriate values
         requestDto.setRound(3);
         requestDto.setTopic("경제");
 

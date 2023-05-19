@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class QuestionRequestDto {
+public class QuestionGameRequestDto {
     private String topic;
     private Integer round;
 

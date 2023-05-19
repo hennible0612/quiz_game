@@ -1,6 +1,7 @@
 package gpt.io.quiz_game.controller.quiz;
 
-import gpt.io.quiz_game.dto.quiz.QuestionRequestDto;
+import gpt.io.quiz_game.dto.quiz.GptResponseDto;
+import gpt.io.quiz_game.dto.quiz.QuestionGameRequestDto;
 import gpt.io.quiz_game.service.quiz.QuizService;
 
 import org.springframework.http.ResponseEntity;
@@ -19,9 +20,16 @@ public class QuizController {
         this.quizService = quizService;
     }
 
+//    @PostMapping("/quiz")
+////    ResponseEntity<List<QuizDto>>
+//    public ResponseEntity<Map<String, List<String>>> sendQuestion(@RequestBody QuestionGameRequestDto requestDto) {
+//        return quizService.askQuestion(requestDto);
+//    }
     @PostMapping("/quiz")
-//    ResponseEntity<List<QuizDto>>
-    public ResponseEntity<Map<String, List<String>>> sendQuestion(@RequestBody QuestionRequestDto requestDto) {
-        return quizService.askQuestion(requestDto);
+    public GptResponseDto sendQuestion(@RequestBody QuestionGameRequestDto requestDto) {
+
+        System.out.println(quizService.askQuestion(requestDto));
+        return null;
+        //        return quizService.askQuestion(requestDto);
     }
 }
