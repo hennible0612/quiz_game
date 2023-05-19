@@ -4,7 +4,7 @@ package gpt.io.quiz_game.service.quiz;
 import gpt.io.quiz_game.config.ChatGptConfig;
 import gpt.io.quiz_game.dto.quiz.GptRequestDto;
 import gpt.io.quiz_game.dto.quiz.GptResponseDto;
-import gpt.io.quiz_game.dto.quiz.QuestionGameRequestDto;
+import gpt.io.quiz_game.dto.quiz.QuizGameRequestDto;
 
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 public class QuizService {
     private static RestTemplate restTemplate = new RestTemplate();
 
-    public GptResponseDto askQuestion(QuestionGameRequestDto questionGameRequestDto) {
+    public GptResponseDto askQuestion(QuizGameRequestDto questionGameRequestDto) {
         try {
             GptRequestDto gptRequestDto = new GptRequestDto(
                     questionGameRequestDto,

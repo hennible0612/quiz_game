@@ -1,9 +1,7 @@
 package gpt.io.quiz_game.dto.quiz;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import gpt.io.quiz_game.config.ChatGptConfig;
 import lombok.Getter;
-import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class GptRequestDto implements Serializable {
     @JsonProperty("top_p")
     private double topP;
 
-    public GptRequestDto(QuestionGameRequestDto requestDto, String model, Integer maxTokens, double temperature, double topP) {
+    public GptRequestDto(QuizGameRequestDto requestDto, String model, Integer maxTokens, double temperature, double topP) {
         MessageDto messageDto = new MessageDto();
 
         String content = requestDto.getRound() + "개의" + requestDto.getTopic() + "에 대한 퀴즈와 정답을 내줘, " +
